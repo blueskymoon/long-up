@@ -17,7 +17,7 @@ using namespace std;
 class Coordinate
 {
 	public:
-	Coordinate();
+	Coordinate(int x,int y);
 	~Coordinate();
 	void setX(int x);
 	void setY(int y);
@@ -30,11 +30,11 @@ class Coordinate
 class Line
 {
 	public:
-	Line();
+	Line(int x1,int y1,int x2,int y2);
 	~Line();
 	void setA(int x,int y);
 	void setB(int x,int y);
-	void printInfo();
+    void printInfo();
 	private:
 	Coordinate m_coorA;
 	Coordinate m_coorB;
@@ -42,8 +42,9 @@ class Line
 };
 
 
-Line::Line()
+Line::Line(int x1,int y1,int x2,int y2):m_coorA(x1,y1),m_coorB(x2,y2)
 {
+
 
 	cout<<"Line()"<<endl;
 }
@@ -64,9 +65,12 @@ void Line::setB(int x,int y)
 	m_coorB.setY(y);
 	cout<<"Line::setB(int x,int y)"<<endl;
 }
-Coordinate::Coordinate()
+Coordinate::Coordinate(int x,int y)
+
 {
-	cout<<"Coordinate()"<<endl;
+	m_iX =x;
+	m_iY=y;
+	cout<<"Coordinate()"<< m_iX<<" "<< m_iY <<endl;
 }
 
 Coordinate::~Coordinate()
@@ -102,9 +106,8 @@ void Line::printInfo()
 
 int main(void)
 	{
-		Line *p = new Line();
-		
-	//	printInfo();
+		Line *p = new Line(2,3,4,5);
+	   p->printInfo();
 		delete p;
 		p=NULL;
 		return 0;
